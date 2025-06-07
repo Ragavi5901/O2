@@ -1,42 +1,43 @@
-import React from 'react'
-import { useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
 import clsx from 'clsx';
 
 const categories = [
-  { name: 'Massage Chairs', path: '/products/massage-chairs' },
-  { name: 'Leg & Foot Massager', path: '/products/leg-foot-massager' },
-  { name: 'Car Mini Massager', path: '/products/car-mini-massager' },
-  { name: 'Steam & Heat Therapy', path: '/products/steam-heat-therapy' },
-  { name: 'Fitness Accessories', path: '/products/fitness-accessories' },
-  { name: 'Home Gym Equipment', path: '/products/home-gym-equipment' },
+  { name: 'Massage Chairs' },
+  { name: 'Leg & Foot Massager' },
+  { name: 'Car Mini Massager' },
+  { name: 'Steam & Heat Therapy' },
+  { name: 'Fitness Accessories' },
+  { name: 'Home Gym Equipment' },
 ];
 
-const CategoryProductTab = () => {
-
-    const navigate = useNavigate();
-  const location = useLocation();
+const CategoryProductTab = ({ selectedTab, onSelect }) => {
   return (
     <div className="flex flex-wrap justify-center gap-3 py-4">
-  {categories.map((cat) => (
-    <div
-      key={cat.path}
-      onClick={() => navigate(cat.path)}
-      className="p-[2px] rounded-full bg-gradient-to-b from-orange-400 to-blue-300 cursor-pointer"
-    >
-      <button
-        className={clsx(
-          'px-4 py-2 rounded-full font-medium w-full h-full',
-          location.pathname === cat.path
-            ? 'bg-orange-500 text-white'
-            : 'bg-white text-gray-700 hover:bg-orange-100'
-        )}
-      >
-        {cat.name}
-      </button>
+      {categories.map((cat) => (
+        <div
+          key={cat.name}
+          onClick={() => onSelect(cat.name)}
+          className="p-[2px] rounded-full cursor-pointer transition"
+          style={{
+            background: selectedTab === cat.name
+              ? '#f97316'
+              : 'linear-gradient(to bottom, #fb923c, #93c5fd)'
+          }}
+        >
+          <button
+            className={clsx(
+              'px-4 py-2 rounded-full font-medium w-full h-full transition',
+              selectedTab === cat.name
+                ? 'bg-orange-500 text-white'
+                : 'bg-white text-gray-700 hover:bg-orange-100'
+            )}
+          >
+            {cat.name}
+          </button>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-  )
-}
+  );
+};
 
-export default CategoryProductTab
+export default CategoryProductTab;

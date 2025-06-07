@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import clsx from 'clsx';
+import React, { useState } from 'react';
 import CategoryProductTab from "./CategoryTabs/CategoryProductTab";
+import MassageChair from './MassageChair';
+import LegFootMassager from './LegFootMassager';
+import CarMiniMassager from './CarMiniMassager';
 import TopIMG1 from '../../assets/Products/TopProducts/TopIMG1.png'
 import TopIMG2 from '../../assets/Products/TopProducts/TopIMG2.png'
 import TopIMG3 from '../../assets/Products/TopProducts/TopIMG3.png'
@@ -11,7 +12,6 @@ import TopIMG6 from '../../assets/Products/TopProducts/TopIMG6.png'
 import TopIMG7 from '../../assets/Products/TopProducts/TopIMG7.png'
 import TopIMG8 from '../../assets/Products/TopProducts/TopIMG8.png'
 import TopIMG9 from '../../assets/Products/TopProducts/TopIMG9.png'
-
 
 const topRatedProducts = [
   {
@@ -75,57 +75,46 @@ const topRatedProducts = [
     tag: 'Leg & Foot Massager',
   },
   {
-  id: 7,
-  title: 'O2 Fitness Health Care Neck Kneading Special',
-  image: TopIMG7,
-  oldPrice: '₹3,499',
-  price: '₹2,499',
-  rating: '4.3',
-  reviews: '1,231',
-  tag: 'Neck Kneading'
-},
-{
-  id: 8,
-  title: 'O2 Fitness Health Care Magnetic Bed Matters',
-  image: TopIMG8,
-  oldPrice: '₹28,500',
-  price: '₹17,799',
-  rating: '4.3',
-  reviews: '1,231',
-  tag: 'Bed Matters'
-},
-{
-  id: 9,
-  title: 'O2 Fitness Health Care 12 Balls Car Seat Massager',
-  image: TopIMG9,
-  oldPrice: '₹9,500',
-  price: '₹6,500',
-  rating: '4.3',
-  reviews: '1,231',
-  tag: 'Car Seat Massager'
-}
+    id: 7,
+    title: 'O2 Fitness Health Care Neck Kneading Special',
+    image: TopIMG7,
+    oldPrice: '₹3,499',
+    price: '₹2,499',
+    rating: '4.3',
+    reviews: '1,231',
+    tag: 'Neck Kneading'
+  },
+  {
+    id: 8,
+    title: 'O2 Fitness Health Care Magnetic Bed Matters',
+    image: TopIMG8,
+    oldPrice: '₹28,500',
+    price: '₹17,799',
+    rating: '4.3',
+    reviews: '1,231',
+    tag: 'Bed Matters'
+  },
+  {
+    id: 9,
+    title: 'O2 Fitness Health Care 12 Balls Car Seat Massager',
+    image: TopIMG9,
+    oldPrice: '₹9,500',
+    price: '₹6,500',
+    rating: '4.3',
+    reviews: '1,231',
+    tag: 'Car Seat Massager'
+  }
 ];
 
+const categoryComponents = {
+  'Massage Chairs': <MassageChair />,
+  'Leg & Foot Massager': <LegFootMassager />,
+  'Car Mini Massager': <CarMiniMassager />,
+  // Add more if needed
+};
+
 const TopRatedProduct = () => {
-  const { category } = useParams();
-  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('All');
-
-  useEffect(() => {
-    if (category) {
-      const formatted = category
-        .replace(/-/g, ' ')
-        .replace(/\b\w/g, (c) => c.toUpperCase());
-
-      if (formatted === 'Massage Chairs') {
-        setSelectedCategory('Massage Chair');
-      } else {
-        setSelectedCategory(formatted);
-      }
-    } else {
-      setSelectedCategory('All');
-    }
-  }, [category]);
 
   const filteredProducts =
     selectedCategory === 'All'
@@ -134,9 +123,15 @@ const TopRatedProduct = () => {
 
   return (
     <div className="px-10 py-8">
-      <CategoryProductTab />
+      <CategoryProductTab
+        selectedTab={selectedCategory}
+        onSelect={(cat) => setSelectedCategory(cat)}
+      />
 
-      {/* Heading */}
+      <div className="my-4">
+        {categoryComponents[selectedCategory] || <p></p>}
+      </div>
+
       <div className="text-center mb-4">
         <h2 className="text-4xl font-bold mb-6 mt-5">Top Rated Products</h2>
         <p className="text-center text-gray-800 mb-6 max-w-5xl mx-auto">
@@ -145,13 +140,9 @@ const TopRatedProduct = () => {
         </p>
       </div>
 
-      {/* Product Cards */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-center">
         {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            className="border rounded-lg shadow-sm p-4 relative"
-          >
+          <div key={product.id} className="border rounded-lg shadow-sm p-4 relative">
             <span className="absolute top-2 right-2 text-transparent bg-clip-text bg-gradient-to-b from-orange-800 to-orange-400 font-semibold">
               Sale
             </span>
@@ -161,7 +152,6 @@ const TopRatedProduct = () => {
               className="w-full h-40 object-contain mb-4 hover:scale-110 cursor-pointer"
             />
             <h1 className="text-gray-500 text-sm">{product.tag}</h1>
-            
             <div className="flex items-center justify-center gap-1 text-yellow-500 mt-1">
               ★ {product.rating}
               <span className="text-xs text-gray-500">({product.reviews})</span>
@@ -173,7 +163,7 @@ const TopRatedProduct = () => {
             <div className="text-lg font-bold text-orange-500">
               {product.price}
             </div>
-            <button className="mt-3  bg-black text-white py-1 px-4 rounded hover:scale-110 cursor-pointer">
+            <button className="mt-3 bg-black text-white py-1 px-4 rounded hover:scale-110 cursor-pointer">
               Add To Cart
             </button>
           </div>

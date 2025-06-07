@@ -139,7 +139,7 @@ const massageChairProducts = [
 const MassageChair = () => {
   return (
     <div className="px-4 py-8">
-      <CategoryProductTab />
+      
       <h2 className="text-4xl font-bold text-center mb-6 mt-5">
         Massage Chairs
       </h2>

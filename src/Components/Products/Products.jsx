@@ -1,6 +1,6 @@
-import React from 'react'
-import TopRatedProduct from './TopRatedProduct'
-import RefreshMind from './RefreshMind'
+import React from "react";
+import TopRatedProduct from "./TopRatedProduct";
+import RefreshMind from "./RefreshMind";
 
 const Products = () => {
   return (
@@ -8,7 +8,7 @@ const Products = () => {
       <TopRatedProduct />
       <RefreshMind />
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;
