@@ -21,47 +21,42 @@ import CheckoutPage from "./pages/CheckoutPage";
 import CartPage from "./pages/CartPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import SuperAdminDashboard from "./pages/SuperAdminDashboard";
-import EditProfile from "./pages/EditProfile";
+
+
+import MyOrders from "./pages/UserDashboard/MyOrders";
+import Wishlist from "./pages/UserDashboard/Wishlist";
+import Cart from "./pages/CartPage";
+import ProfileSettings from "./pages/UserDashboard/ProfileSettings";
+import Reviews from "./pages/UserDashboard/Reviews";
+import SupportTickets from "./pages/UserDashboard/SupportTickets";
 
 import { AuthProvider, AuthContext } from "./contexts/AuthContext";
-
-// ✅ ProtectedRoute with robust checks & logging
 
 const ProtectedRoute = ({ allowedRoles, children }) => {
   const { user, role, authChecked } = React.useContext(AuthContext);
 
-  console.log("[ProtectedRoute] authChecked:", authChecked, "user:", !!user, "userRole:", role);
-
-  // Wait until both auth and role are fully resolved
   if (!authChecked || (user && role == null)) {
-  console.log("⏳ Waiting for role/user...");
-  return <div>Loading...</div>;
-}
+    return <div>Loading...</div>;
+  }
 
-if (!user || !allowedRoles.includes(role)) {
-  console.warn("🚫 Access denied. User:", user?.email, "Role:", role);
-  return <Navigate to="/login" />;
-}
-
+  if (!user || !allowedRoles.includes(role)) {
+    return <Navigate to="/login" />;
+  }
 
   return children;
 };
 
-// ✅ DashboardRedirect routes after full resolution
 const DashboardRedirect = () => {
   const { role, authChecked } = React.useContext(AuthContext);
-
-  console.log("[DashboardRedirect] authChecked:", authChecked, "userRole:", role);
 
   if (!authChecked || role == null) {
     return <div>Loading...</div>;
   }
   if (role === "admin") return <Navigate to="/admindashboard" />;
   if (role === "superadmin") return <Navigate to="/superadmindashboard" />;
-  return <Navigate to="/" />;
+  return <Navigate to="/orders" />;
 };
 
-// ✅ Main app wrapper where header/footer are shown/hidden
 const AppWrapper = () => {
   const location = useLocation();
   const hideNavAndFooter = ["/login", "/register"];
@@ -83,7 +78,7 @@ const AppWrapper = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
 
-        {/* Protected admin / superadmin dashboard routes */}
+        {/* Admin and Superadmin dashboards */}
         <Route
           path="/admindashboard"
           element={
@@ -101,23 +96,66 @@ const AppWrapper = () => {
           }
         />
 
-        {/* Alias route that figures out where to go */}
+        {/* Shared access */}
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+            <ProtectedRoute allowedRoles={["admin", "superadmin", "user"]}>
               <DashboardRedirect />
             </ProtectedRoute>
           }
         />
+       
+
+        {/* User dashboard access to features */}
         <Route
-  path="/edit-profile"
-  element={
-    <ProtectedRoute allowedRoles={["admin", "superadmin", "user"]}>
-      <EditProfile />
-    </ProtectedRoute>
-  }
-/>
+          path="/orders"
+          element={
+            <ProtectedRoute allowedRoles={["user", "admin", "superadmin"]}>
+              <MyOrders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoute allowedRoles={["user", "admin", "superadmin"]}>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user-cart"
+          element={
+            <ProtectedRoute allowedRoles={["user", "admin", "superadmin"]}>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/edit-profile"
+          element={
+            <ProtectedRoute allowedRoles={["user", "admin", "superadmin"]}>
+              <ProfileSettings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/reviews"
+          element={
+            <ProtectedRoute allowedRoles={["user", "admin", "superadmin"]}>
+              <Reviews />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/support"
+          element={
+            <ProtectedRoute allowedRoles={["user", "admin", "superadmin"]}>
+              <SupportTickets />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" />} />
@@ -128,7 +166,6 @@ const AppWrapper = () => {
   );
 };
 
-// ✅ Root component with context provider
 function App() {
   return (
     <Router>

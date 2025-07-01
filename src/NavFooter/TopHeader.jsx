@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart ,AiOutlineHeart} from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
@@ -31,6 +31,13 @@ const TopHeader = () => {
     setDropdownOpen(false);
   };
 
+  const handleUserDashboard = () => {
+    if (role === "user") {
+      navigate("/userdashboard");
+      setDropdownOpen(false);
+    }
+  };
+
   return (
     <div className="w-full border-b border-gray-200 bg-white px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 relative">
@@ -54,7 +61,9 @@ const TopHeader = () => {
         </div>
 
         {/* Cart and User Controls */}
+        {/* Cart and User Controls */}
         <div className="flex items-center gap-6 order-2 md:order-3 relative">
+          {/* Cart Icon */}
           <Link to="/cart" className="relative">
             <AiOutlineShoppingCart className="text-xl cursor-pointer text-gray-700" />
             {cartCount > 0 && (
@@ -62,6 +71,11 @@ const TopHeader = () => {
                 {cartCount}
               </span>
             )}
+          </Link>
+
+          {/* Wishlist Icon */}
+          <Link to="/wishlist">
+            <AiOutlineHeart className="text-xl cursor-pointer text-gray-700" />
           </Link>
 
           {user ? (
@@ -78,6 +92,7 @@ const TopHeader = () => {
                         {user.email}
                       </span>
 
+                      {/* Admin or Superadmin Dashboard */}
                       {(role === "admin" || role === "superadmin") && (
                         <button
                           onClick={handleDashboardRedirect}
@@ -87,16 +102,34 @@ const TopHeader = () => {
                         </button>
                       )}
 
-                      <Link to="/edit-profile" className="px-4 py-2 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>
+                     
+
+                      <Link
+                        to="/edit-profile"
+                        className="px-4 py-2 hover:bg-gray-100"
+                        onClick={() => setDropdownOpen(false)}
+                      >
                         Edit Profile
                       </Link>
-                      <Link to="/orders" className="px-4 py-2 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>
+                      <Link
+                        to="/orders"
+                        className="px-4 py-2 hover:bg-gray-100"
+                        onClick={() => setDropdownOpen(false)}
+                      >
                         Order History
                       </Link>
-                      <Link to="/wishlist" className="px-4 py-2 hover:bg-gray-100" onClick={() => setDropdownOpen(false)}>
+                      <Link
+                        to="/wishlist"
+                        className="px-4 py-2 hover:bg-gray-100"
+                        onClick={() => setDropdownOpen(false)}
+                      >
                         Wishlist
                       </Link>
-                      <button onClick={handleLogout} className="px-4 py-2 text-red-500 hover:bg-gray-100">
+
+                      <button
+                        onClick={handleLogout}
+                        className="px-4 py-2 text-red-500 hover:bg-gray-100"
+                      >
                         Logout
                       </button>
                     </div>
