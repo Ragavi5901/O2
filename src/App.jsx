@@ -31,6 +31,7 @@ import Reviews from "./pages/UserDashboard/Reviews";
 import SupportTickets from "./pages/UserDashboard/SupportTickets";
 
 import { AuthProvider, AuthContext } from "./contexts/AuthContext";
+import ProductDetail from "./Components/HomePage/ProductDetail";
 
 const ProtectedRoute = ({ allowedRoles, children }) => {
   const { user, role, authChecked } = React.useContext(AuthContext);
@@ -69,6 +70,7 @@ const AppWrapper = () => {
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contacts />} />

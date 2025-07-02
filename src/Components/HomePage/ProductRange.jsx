@@ -7,7 +7,7 @@ import legImg from '../../assets/HomeImage/leg.jpg';
 import carImg from '../../assets/HomeImage/car.jpg';
 import steamImg from '../../assets/HomeImage/steam.jpg';
 
-const products = [
+const discoverproducts = [
   { name: 'Massage Chairs', image: chairImg },
   { name: 'Leg And Foot Massager', image: legImg },
   { name: 'Car Mini Massager', image: carImg },
@@ -69,7 +69,7 @@ const ProductRange = () => {
 
       <div className="relative px-10 mb-10">
         <Slider {...settings}>
-          {products.map((item, index) => (
+          {discoverproducts.map((item, index) => (
             <div key={index} className="flex flex-col items-center px-15">
               <img
                 src={item.image}

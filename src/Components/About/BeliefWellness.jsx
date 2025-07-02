@@ -1,7 +1,7 @@
 import React from "react";
 
 const BeliefWellness = () => {
-  const data = [
+  const bewellness = [
     {
       title: 'Mission',
       gradient: 'from-orange-500 to-yellow-400',
@@ -32,7 +32,7 @@ const BeliefWellness = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {data.map((item, index) => (
+        {bewellness.map((item, index) => (
           <div key={index} className="relative">
             {/* Title with triangle */}
             <div className="relative -top-5 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center">

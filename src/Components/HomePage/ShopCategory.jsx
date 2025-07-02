@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, incrementQty, decrementQty } from "../../redux/cartSlice";
 
@@ -9,7 +10,7 @@ import Image4 from "../../assets/HomeImage/IMG4.png";
 import Image5 from "../../assets/HomeImage/IMG5.png";
 import Image6 from "../../assets/HomeImage/IMG6.png";
 
-const products = [
+const shopcat = [
   {
     id: 1,
     title: "O2 Fitness Health Care RUBY A321-2.3D Model",
@@ -72,47 +73,64 @@ const products = [
   },
 ];
 
-const ProductCard = ({ product, quantity, onAddToCart, onIncrement, onDecrement }) => (
-  <div className="border rounded-lg shadow-sm p-4 relative bg-white text-center border-gray-400">
-    <div className="absolute top-2 right-2 text-md px-2 py-0.5 font-semibold text-transparent bg-clip-text bg-gradient-to-b from-orange-800 to-orange-400">
+const ProductCard = ({
+  product,
+  quantity,
+  onAddToCart,
+  onIncrement,
+  onDecrement,
+  onNavigate,
+}) => (
+  <div className="border rounded-lg shadow-sm p-4 relative bg-white text-center border-gray-300">
+    <div className="absolute top-2 right-2 text-sm px-2 py-0.5 font-semibold text-transparent bg-clip-text bg-gradient-to-b from-orange-800 to-orange-400">
       Sale
     </div>
+
+    {/* Image */}
     <img
+      onClick={() => onNavigate(product.id)}
       src={product.image}
       alt={product.title}
-      className="w-full h-48 object-contain mb-3 hover:scale-110 transition"
+      className="w-full h-40 sm:h-48 md:h-56 object-contain mb-3 hover:scale-105 transition-transform cursor-pointer"
     />
-    <h3 className="text-md text-gray-600">{product.type}</h3>
-    <div className="text-md text-yellow-500 mb-1">
+
+    <h3 className="text-sm sm:text-md text-gray-600">{product.type}</h3>
+    <div className="text-sm text-yellow-500 mb-1">
       {"★".repeat(Math.floor(product.rating))}
       {"☆".repeat(5 - Math.floor(product.rating))} ({product.reviews})
     </div>
-    <h2 className="text-lg font-semibold text-gray-800 leading-snug mb-1">
+
+    <h2
+      onClick={() => onNavigate(product.id)}
+      className="text-md sm:text-lg font-semibold text-gray-800 leading-snug mb-1 cursor-pointer hover:text-orange-600 transition"
+    >
       {product.title}
     </h2>
+
     <div className="mb-2">
       <span className="text-orange-600 font-bold text-sm">{product.price}</span>{" "}
       <span className="text-gray-400 line-through text-xs">{product.original}</span>
     </div>
+
     {quantity > 0 ? (
       <div className="flex justify-center items-center space-x-2 mt-2">
         <button
           onClick={() => onDecrement(product.id)}
-          className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          className="px-2 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
         >
           –
         </button>
-        <span className="font-medium">{quantity}</span>
+        <span className="font-medium text-sm">{quantity}</span>
         <button
           onClick={() => onIncrement(product.id)}
-          className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          className="px-2 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
         >
           +
         </button>
       </div>
     ) : (
       <button
-        className="bg-black text-white px-4 py-1 text-sm rounded hover:bg-gray-800 hover:scale-110 transition mt-2"
+        className="bg-black text-white px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm rounded hover:bg-gray-800 hover:scale-105 transition mt-2"
         onClick={() => onAddToCart(product)}
       >
         Add To Cart
@@ -122,6 +140,7 @@ const ProductCard = ({ product, quantity, onAddToCart, onIncrement, onDecrement 
 );
 
 const ShopCategory = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
 
@@ -133,19 +152,22 @@ const ShopCategory = () => {
   const handleAddToCart = (product) => dispatch(addToCart(product));
   const handleIncrement = (id) => dispatch(incrementQty(id));
   const handleDecrement = (id) => dispatch(decrementQty(id));
+  const handleNavigate = (id) => navigate(`/product/${id}`);
 
   return (
-    <section className="py-10 bg-white">
+    <section className="py-6 sm:py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-5">Shop By Category</h2>
-        <p className="text-center text-gray-600 mb-8 max-w-4xl mx-auto leading-loose">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-5">
+          Shop By Category
+        </h2>
+        <p className="text-center text-gray-600 mb-8 max-w-4xl mx-auto leading-loose text-sm sm:text-base">
           Discover our full range of wellness solutions designed for every need.
-          From luxurious massage chairs to compact leg massagers and
-          car-friendly models — explore the right category to begin your journey
-          to relaxation.
+          From luxurious massage chairs to compact leg massagers and car-friendly models —
+          explore the right category to begin your journey to relaxation.
         </p>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
+          {shopcat.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -153,18 +175,10 @@ const ShopCategory = () => {
               onAddToCart={handleAddToCart}
               onIncrement={handleIncrement}
               onDecrement={handleDecrement}
+              onNavigate={handleNavigate}
             />
           ))}
         </div>
-
-        {/* <div className="mt-8">
-          <h3 className="text-2xl font-bold mb-2">Cart Items: {cart.length}</h3>
-          <ul className="list-disc pl-6 text-gray-700">
-            {cart.map((item) => (
-              <li key={item.id}>{item.title} - {item.price} (x{item.quantity})</li>
-            ))}
-          </ul>
-        </div> */}
       </div>
     </section>
   );
