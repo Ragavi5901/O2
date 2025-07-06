@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, incrementQty, decrementQty } from "../../redux/cartSlice";
 
-import Image1 from "../../assets/HomeImage/IMG1.png";
-import Image2 from "../../assets/HomeImage/IMG2.png";
+import Image1 from "../../assets/Products/MCChair/IMG-1.jpg";
+import Image2 from "../../assets/Products/MCChair/IMG-2.jpg";
+import Image3 from "../../assets/Products/MCChair/IMG-3.jpg";
+import Image4 from "../../assets/Products/MCChair/IMG-4.jpg";
+import Image5 from "../../assets/Products/MCChair/IMG-5.jpg";
+import Image6 from "../../assets/Products/MCChair/IMG-6.jpeg";
+import Image7 from "../../assets/Products/MCChair/IMG-7.jpeg";
+import Image8 from "../../assets/Products/MCChair/IMG-8.jpeg";
+import Image9 from "../../assets/Products/MCChair/IMG-9.jpeg";
+import Image10 from "../../assets/Products/MCChair/IMG-10.jpg";
+import Image11 from "../../assets/Products/MCChair/IMG-11.jpg";
+import Image12 from "../../assets/Products/MCChair/IMG-12.jpg";
+import Image13 from "../../assets/Products/MCChair/IMG-13.jpg";
+import Image14 from "../../assets/Products/MCChair/IMG-14.jpg";
+import Image18 from "../../assets/Products/Leg/Img-18.jpeg";
+import Image19 from "../../assets/Products/Neck/Img-19.jpeg";
+import Image20 from "../../assets/Products/Neck/Img-20.jpeg";
+import Image21 from "../../assets/Products/Neck/Img-21.jpeg";
 
 const products = [
   {
@@ -18,7 +34,7 @@ const products = [
     original: "₹2,40,000",
     image: Image1,
     imagetitle: "RUBY A321-2, 3D Model",
-    thumbnails: [Image1, Image2],
+    thumbnails: [Image1, Image2, Image3],
     description:
       "Experience personalized comfort with the RUBY A321-2, a smart 3D massage chair designed to target stress, fatigue, and muscle tension with precision and care.",
     features: [
@@ -35,16 +51,16 @@ const products = [
   },
   {
     id: 2,
-    title: "O2 Fitness Health Care Car Seat Massager Big",
+    title: "O2 Fitness Health Care 200-O2 Business Class 3D Massage Chair",
     type: "Massage Chair",
     para: "Ultimate leg and foot relief with air compression and heat.",
     rating: 4.2,
     reviews: 85,
     price: "₹32,000",
     original: "₹42,000",
-    image: Image2,
+    image: Image4,
     imagetitle: "Foot Massager",
-    thumbnails: [Image2],
+    thumbnails: [Image4, Image5],
     description: "Perfect for tired feet and calves after a long day.",
     features: [
       "Air Compression Massage",
@@ -54,25 +70,156 @@ const products = [
     ],
     whyChoose: "Affordable and compact massager for your home comfort.",
   },
-
+  {
+    id: 3,
+    title: "O2 Fitness Health Care 90-02 Premium 5D Massage Chair",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image6,
+    imagetitle: "Foot Massager",
+    thumbnails: [Image6, Image7, Image8, Image9, Image10],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+  },
+  {
+    id: 4,
+    title: "O2 Fitness Health Care 90-02 Premium 5D Massage Chair",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image11,
+    imagetitle: "Foot Massager",
+    thumbnails: [Image11, Image12],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+  },
+  {
+     id: 5,
+    title: "O2 Fitness Health Care 90-02 Premium 5D Massage Chair",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image13,
+    imagetitle: "Foot Massager",
+    thumbnails: [Image13, Image14],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+    {
+     id: 6,
+    title: "Home Gym Fitness (Advanced Model)",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image18,
+    imagetitle: "Foot Massager",
+    thumbnails: [Image13, Image14],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+    {
+     id: 7,
+    title: "Home Gym Fitness (Advanced Model)",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image18,
+    imagetitle: "Foot Massager",
+    thumbnails: [Image18, Image14],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+    {
+     id: 8,
+    title: "O2 Neck Massager (Wireless)",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image18,
+    imagetitle: "Foot Massager",
+    thumbnails: [Image19, Image20, Image21],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+  
 ];
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = products.find((item) => item.id === parseInt(id));
   const dispatch = useDispatch();
-  const [mainImage, setMainImage] = useState(product?.image);
-  const [qty, setQty] = useState(1);
+  const cart = useSelector((state) => state.cart.items);
+
+  const product = products.find((item) => item.id === parseInt(id));
 
   if (!product)
     return <p className="text-center text-red-500">Product not found.</p>;
 
+  const cartItem = cart.find((item) => item.id === product.id);
+  const quantity = cartItem?.quantity || 0;
+  const [mainImage, setMainImage] = useState(product.image);
+
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity: qty }));
+    dispatch(addToCart({ ...product }));
+  };
+
+  const handleIncrement = () => {
+    dispatch(incrementQty(product.id));
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrementQty(product.id));
   };
 
   useEffect(() => {
-    // Scroll to top when this component mounts
     window.scrollTo(0, 0);
   }, []);
 
@@ -137,31 +284,32 @@ const ProductDetail = () => {
 
           {/* Quantity and Buttons */}
           <div className="flex items-center gap-3 mt-6">
-            <div className="flex items-center border rounded">
-              <button
-                onClick={() => qty > 1 && setQty(qty - 1)}
-                className="px-3 py-1 bg-gray-200 hover:bg-gray-300"
-              >
-                –
-              </button>
-              <span className="px-4">{qty}</span>
-              <button
-                onClick={() => setQty(qty + 1)}
-                className="px-3 py-1 bg-gray-200 hover:bg-gray-300"
-              >
-                +
-              </button>
+            <div className="flex items-center gap-3 mt-6">
+              {quantity > 0 ? (
+                <div className="flex items-center space-x-2 mt-2">
+                  <button
+                    onClick={handleDecrement}
+                    className="px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
+                  >
+                    –
+                  </button>
+                  <span className="font-medium text-sm">{quantity}</span>
+                  <button
+                    onClick={handleIncrement}
+                    className="px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
+                  >
+                    +
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={handleAddToCart}
+                  className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+                >
+                  Add to Cart
+                </button>
+              )}
             </div>
-
-            <button
-              onClick={handleAddToCart}
-              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-            >
-              Add to Cart
-            </button>
-            <button className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
-              Buy Now
-            </button>
           </div>
 
           {/* Description */}

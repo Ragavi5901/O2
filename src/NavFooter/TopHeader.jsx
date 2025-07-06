@@ -1,16 +1,18 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import { AiOutlineShoppingCart ,AiOutlineHeart} from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { AuthContext } from "../contexts/AuthContext";
 import Logo from "../assets/HomeImage/Logo.png";
+import Enquiry from "./Enquiry"; // ⬅️ import Enquiry form component
 
 const TopHeader = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false); // ⬅️ state for modal
   const { user, role, authChecked } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -61,7 +63,6 @@ const TopHeader = () => {
         </div>
 
         {/* Cart and User Controls */}
-        {/* Cart and User Controls */}
         <div className="flex items-center gap-6 order-2 md:order-3 relative">
           {/* Cart Icon */}
           <Link to="/cart" className="relative">
@@ -102,8 +103,6 @@ const TopHeader = () => {
                         </button>
                       )}
 
-                     
-
                       <Link
                         to="/edit-profile"
                         className="px-4 py-2 hover:bg-gray-100"
@@ -137,8 +136,11 @@ const TopHeader = () => {
                 )}
               </div>
 
-              {/* Enquiry Now */}
-              <button className="bg-orange-600 hover:bg-orange-700 text-white text-sm px-4 py-2 rounded-lg">
+              {/* Enquiry Now Button */}
+              <button
+                className="bg-orange-600 hover:bg-orange-700 text-white text-sm px-4 py-2 rounded-lg"
+                onClick={() => setShowEnquiry(true)}
+              >
                 Enquiry Now
               </button>
             </>
@@ -152,6 +154,24 @@ const TopHeader = () => {
           )}
         </div>
       </div>
+
+      {/* Enquiry Form Popup Modal */}
+      {showEnquiry && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4">
+          <div className=" rounded-xl shadow-2xl max-w-xl w-full p-6 relative">
+            {/* Close Button */}
+            <button
+              className="absolute top-2 right-4 text-black text-2xl font-bold"
+              onClick={() => setShowEnquiry(false)}
+            >
+              &times;
+            </button>
+
+            {/* Enquiry Form */}
+            <Enquiry/>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

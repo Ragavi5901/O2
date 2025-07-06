@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, incrementQty, decrementQty } from "../../redux/cartSlice";
 
-import Image1 from "../../assets/HomeImage/IMG1.png";
+import Image1 from "../../assets/Products/MCChair/IMG-1.jpg";
 import Image2 from "../../assets/HomeImage/IMG2.png";
 import Image3 from "../../assets/HomeImage/IMG3.png";
 import Image4 from "../../assets/HomeImage/IMG4.png";
-import Image5 from "../../assets/HomeImage/IMG5.png";
-import Image6 from "../../assets/HomeImage/IMG6.png";
+import Image5 from "../../assets/Products/MCChair/IMG-4.jpg";
+import Image6 from "../../assets/Products/MCChair/IMG-6.jpeg"
 
 const shopcat = [
   {
     id: 1,
-    title: "O2 Fitness Health Care RUBY A321-2.3D Model",
+    title: "O2 Fitness Health Care 100-02 Intelligent 4D Massage Chair",
     type: "Massage Chair",
     rating: 4.5,
     reviews: 123,
@@ -23,23 +23,23 @@ const shopcat = [
   },
   {
     id: 2,
-    title: "O2 Fitness Health Care Car Seat Massager Big",
+    title: "O2 Fitness Health Care 200-O2 Business Class 3D Massage Chair",
     type: "Massage Chair",
     rating: 4.3,
     reviews: 112,
     price: "₹1,70,000",
     original: "₹2,40,000",
-    image: Image2,
+    image: Image5,
   },
   {
     id: 3,
-    title: "O2 Fitness Health Care Mini Foot Massager",
+    title: "O2 Fitness Health Care 90-02 Premium 5D Massage Chair",
     type: "Foot Massager",
     rating: 4.0,
     reviews: 80,
     price: "₹6,499",
     original: "₹14,999",
-    image: Image3,
+    image: Image6,
   },
   {
     id: 4,
@@ -73,71 +73,46 @@ const shopcat = [
   },
 ];
 
-const ProductCard = ({
-  product,
-  quantity,
-  onAddToCart,
-  onIncrement,
-  onDecrement,
-  onNavigate,
-}) => (
-  <div className="border rounded-lg shadow-sm p-4 relative bg-white text-center border-gray-300">
+const ProductCard = ({ product, onNavigate, onBuyNow }) => (
+  <div
+    className="border rounded-lg shadow-sm p-4 relative bg-white text-center border-gray-300 hover:shadow-md transition"
+    onClick={() => onNavigate(product.id)}
+  >
     <div className="absolute top-2 right-2 text-sm px-2 py-0.5 font-semibold text-transparent bg-clip-text bg-gradient-to-b from-orange-800 to-orange-400">
       Sale
     </div>
 
-    {/* Image */}
     <img
-      onClick={() => onNavigate(product.id)}
       src={product.image}
       alt={product.title}
-      className="w-full h-40 sm:h-48 md:h-56 object-contain mb-3 hover:scale-105 transition-transform cursor-pointer"
+      className="w-full h-40 sm:h-48 md:h-56 object-contain mb-3 hover:scale-105 transition-transform"
     />
-
     <h3 className="text-sm sm:text-md text-gray-600">{product.type}</h3>
     <div className="text-sm text-yellow-500 mb-1">
       {"★".repeat(Math.floor(product.rating))}
       {"☆".repeat(5 - Math.floor(product.rating))} ({product.reviews})
     </div>
-
-    <h2
-      onClick={() => onNavigate(product.id)}
-      className="text-md sm:text-lg font-semibold text-gray-800 leading-snug mb-1 cursor-pointer hover:text-orange-600 transition"
-    >
+    <h2 className="text-md sm:text-lg font-semibold text-gray-800 leading-snug mb-1 hover:text-orange-600 transition">
       {product.title}
     </h2>
-
     <div className="mb-2">
       <span className="text-orange-600 font-bold text-sm">{product.price}</span>{" "}
       <span className="text-gray-400 line-through text-xs">{product.original}</span>
     </div>
 
-    {quantity > 0 ? (
-      <div className="flex justify-center items-center space-x-2 mt-2">
-        <button
-          onClick={() => onDecrement(product.id)}
-          className="px-2 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
-        >
-          –
-        </button>
-        <span className="font-medium text-sm">{quantity}</span>
-        <button
-          onClick={() => onIncrement(product.id)}
-          className="px-2 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
-        >
-          +
-        </button>
-      </div>
-    ) : (
-      <button
-        className="bg-black text-white px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm rounded hover:bg-gray-800 hover:scale-105 transition mt-2"
-        onClick={() => onAddToCart(product)}
-      >
-        Add To Cart
-      </button>
-    )}
+ <button
+  onClick={(e) => {
+    e.stopPropagation(); 
+    onNavigate(product.id); 
+  }}
+  className="mt-3 bg-black text-white text-sm px-4 py-1.5 rounded hover:bg-gray-800 transition"
+>
+  Buy Now
+</button>
+
   </div>
 );
+
 
 const ShopCategory = () => {
   const navigate = useNavigate();

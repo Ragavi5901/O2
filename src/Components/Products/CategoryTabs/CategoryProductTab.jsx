@@ -3,11 +3,10 @@ import clsx from 'clsx';
 
 const categories = [
   { name: 'Massage Chairs' },
+  {name:"Fitness Massagers"},
   { name: 'Leg & Foot Massager' },
-  { name: 'Car Mini Massager' },
-  { name: 'Steam & Heat Therapy' },
-  { name: 'Fitness Accessories' },
-  { name: 'Home Gym Equipment' },
+  { name: 'Neck Massager' },
+  
 ];
 
 const CategoryProductTab = ({ selectedTab, onSelect }) => {

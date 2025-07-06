@@ -1,10 +1,14 @@
 import React from 'react'
 import Getintouch from './Getintouch'
+import ContactDetails from './ContactDetails'
+import MapSection from './MapSection'
 
 const Contacts = () => {
   return (
     <div>
-        <Getintouch />
+      <Getintouch />
+      <ContactDetails />
+      <MapSection />
     </div>
   )
 }

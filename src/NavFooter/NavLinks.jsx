@@ -11,7 +11,7 @@ const NavLinks = () => {
     { name: "Products", path: "/products" },
     { name: "About Us", path: "/about" },
     { name: "Contact", path: "/contact" },
-    { name: "Warranty", path: "/warranty" },
+    
   ];
 
   return (

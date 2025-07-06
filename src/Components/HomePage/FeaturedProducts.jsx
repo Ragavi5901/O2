@@ -111,8 +111,8 @@ const FeaturedProducts = () => {
           <div key={product.id} className="px-2">
             <div
               className="flex flex-col md:flex-row max-w-md md:max-w-2xl bg-white rounded-lg border p-4 shadow hover:shadow-lg transition mx-auto min-h-[350px] md:h-[300px]"
-  style={{
-    borderImage: "linear-gradient(to right, orange, skyblue) 1",
+              style={{
+                borderImage: "linear-gradient(to right, orange, skyblue) 1",
               }}
             >
               {/* Left: Image */}

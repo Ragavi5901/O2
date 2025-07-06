@@ -33,7 +33,7 @@ const LegProducts = [
   
 ];
 
-const LegFootMassager = () => {
+const FitnessMassagers = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
@@ -51,7 +51,7 @@ const LegFootMassager = () => {
   return (
     <div className="px-4 py-8">
       <h2 className="text-4xl font-bold text-center mb-6 mt-5">
-        Leg Massager
+        Fitness Massagers
       </h2>
       <p className="text-center text-gray-800 mb-6 max-w-5xl mx-auto">
         Let our massage chairs do the work. From zero gravity to heated rollers,
@@ -149,4 +149,4 @@ const LegFootMassager = () => {
   );
 };
 
-export default LegFootMassager;
+export default FitnessMassagers;
