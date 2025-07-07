@@ -14,17 +14,20 @@ const Hero = () => {
   }, [popupOpen]);
 
   return (
-    <section
-      className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat text-white"
-      style={{ backgroundImage: `url(${bgImg})` }}
-    >
+    <section className="relative w-full h-[45vh] sm:h-[40vh] md:h-screen overflow-hidden text-white">
+  <img
+    src={bgImg}
+    alt="Background"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+    
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 flex flex-col justify-center h-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 flex flex-col justify-center h-full ">
         <div className="text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f36b0a] to-[#f86802]">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f36b0a] to-[#f86802]">
             Discover Luxury & Wellness with O2 <br />
             Massage Chairs
           </h2>
@@ -39,7 +42,7 @@ const Hero = () => {
             stress — we’ve got your back.
           </p>
 
-          <div className="flex gap-4 mt-6 justify-center md:justify-start">
+          <div className="flex gap-4 mt-3 justify-center md:justify-start">
             <button className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-lg">
               Shop Now
             </button>

@@ -36,8 +36,8 @@ const OurJourny = () => {
     <div className="w-full bg-white ">
       {/* Title Section */}
       <div className="text-center px-4 md:px-10 max-w-7xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold">Our Journey</h1>
-        <p className="text-gray-700 mt-4 leading-loose py-5 text-lg">
+        <h1 className="text-2xl md:text-4xl font-bold">Our Journey</h1>
+        <p className="text-gray-700 mt-4 leading-loose py-5 md:text-lg text-sm">
           O2 Fitness Healthcare began with a simple goal — to bring wellness closer to people’s lives.
           What started as a small initiative in Chennai has now grown into a trusted brand serving
           thousands across India. Over the years, we’ve introduced smart massage chairs, leg massagers,

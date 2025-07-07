@@ -12,14 +12,14 @@ const ContactDetails = () => {
         <div>
           <div className="flex items-center space-x-2 mb-1">
             <MapPin className="text-orange-500" size={20} />
-            <h3 className="font-semibold text-lg">Head office</h3>
+            <h3 className="font-semibold text-md md:text-lg ">Head office</h3>
           </div>
-          <p className="text-gray-700">O2FITNESS HEALTH CARE</p>
-          <p className="text-gray-600 mt-1">
+          <p className="text-gray-700 text-sm md:text-md">O2FITNESS HEALTH CARE</p>
+          <p className="text-gray-600 mt-1 text-sm md:text-md">
             NO:202, Ganapathy colony, 7th cross street, Nanthapakkam 89
           </p>
-          <p className="text-gray-600 mt-1">Chennai - 638009</p>
-          <div className="flex items-start gap-2">
+          <p className="text-gray-600 mt-1 text-sm md:text-md">Chennai - 638009</p>
+          <div className="flex items-start gap-2  text-sm md:text-md">
             <Phone className="text-orange-500 mt-1" size={20} />
             <p className="text-gray-600 mt-1">6380097315, 9750059375</p>
           </div>
@@ -29,15 +29,15 @@ const ContactDetails = () => {
         <div>
           <div className="flex items-center space-x-2 mb-1">
             <MapPin className="text-orange-500" size={20} />
-            <h3 className="font-semibold text-lg">Branch office</h3>
+            <h3 className="font-semibold text-md md:text-lg">Branch office</h3>
           </div>
-          <p className="text-gray-700 mt-1">O2FITNESS HEALTH CARE</p>
-          <p className="text-gray-600 mt-1">
+          <p className="text-gray-700 mt-1  text-sm md:text-md">O2FITNESS HEALTH CARE</p>
+          <p className="text-gray-600 mt-1  text-sm md:text-md">
             N-48, Kadarshkhan street, Near Thirumal blood lab, junction (opp)
             Suramangalam
           </p>
-          <p className="text-gray-600 mt-1">SALEM - 636005</p>
-          <div className="flex items-start gap-2 mt-1">
+          <p className="text-gray-600 mt-1  text-sm md:text-md">SALEM - 636005</p>
+          <div className="flex items-start gap-2 mt-1  text-sm md:text-md">
             <Phone className="text-orange-500 mt-1" size={20} />
             <p className="text-gray-600">
               6380097315, 9750059375, 8667833328, 8668144412
@@ -46,7 +46,7 @@ const ContactDetails = () => {
         </div>
 
         {/* Email */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2  text-sm md:text-md">
           <Mail className="text-orange-500" size={20} />
           <span className="text-gray-700">o2fitnesshealthcare@gmail.com</span>
         </div>

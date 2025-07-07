@@ -13,9 +13,9 @@ const WhyChooseUs = () => {
   return (
     <section className="w-full bg-white py-12 px-4 md:px-20">
       {/* Title & Paragraph */}
-      <div className="text-left mb-12 max-w-5xl">
-        <h2 className="text-4xl md:text-4xl font-bold text-black mb-4">Why Choose Us</h2>
-        <p className="text-gray-700 text-lg leading-loose">
+      <div className="md:text-left text-center mb-12 max-w-5xl">
+        <h2 className="text-2xl md:text-4xl font-bold text-black mb-4">Why Choose Us</h2>
+        <p className="text-gray-700 md:text-lg text-sm leading-loose">
           At O2 Fitness Healthcare, we combine advanced massage technology with reliable service to bring wellness into your daily routine. 
           From premium 3D and 4D massage chairs to compact leg massagers and fitness accessories, every product is designed with care, 
           comfort, and effectiveness in mind. We offer free doorstep delivery, dedicated customer support, and a strong warranty — 

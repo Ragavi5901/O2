@@ -38,10 +38,10 @@ const CustomerSay = () => {
     <section className="py-12 px-4 sm:px-6 md:px-16 bg-white">
       {/* Section Heading */}
       <div className="mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900  md:text-left text-center">
           What Our Customers Say
         </h2>
-        <p className="text-gray-600 mt-2 max-w-3xl">
+        <p className="text-gray-600 mt-2 leading-loose md:text-lg text-sm">
           At O2 Fitness Healthcare, customer satisfaction is at the heart of
           everything we do. From product quality to service support, we’re proud
           to have earned the trust of thousands across India. Here’s what a few
