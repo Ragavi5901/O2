@@ -9,15 +9,17 @@ import ProductRange from './ProductRange'
 
 const Home = () => {
   return (
-    <div>
-        <Hero />
-        <ProductRange />
-        <ShopCategory />
-        <FeaturedProducts />
-        <RelaxationSection />
-        <WhyChoose />
-        <Reviews />
-    </div>
+    <div className="w-full overflow-x-hidden">
+  <div className="max-w-[100vw] overflow-x-hidden">
+    <Hero />
+    <ProductRange />
+    <ShopCategory />
+    <FeaturedProducts />
+    <RelaxationSection />
+    <WhyChoose />
+    <Reviews />
+  </div>
+</div>
   )
 }
 

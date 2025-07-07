@@ -21,6 +21,14 @@ import Image18 from "../../assets/Products/Leg/Img-18.jpeg";
 import Image19 from "../../assets/Products/Neck/Img-19.jpeg";
 import Image20 from "../../assets/Products/Neck/Img-20.jpeg";
 import Image21 from "../../assets/Products/Neck/Img-21.jpeg";
+import Image28 from "../../assets/Products/Foot/IMG-20.jpg";
+import Image29 from "../../assets/Products/Foot/IMG-21.jpg";
+import Image22 from "../../assets/Products/Foot/IMG-22.jpg";
+import Image23 from "../../assets/Products/Foot/IMG-23.jpg";
+import Image24 from "../../assets/Products/Foot/IMG-24.jpg";
+import Image25 from "../../assets/Products/Foot/IMG-25.jpg";
+import Image26 from "../../assets/Products/Foot/IMG-26.jpg";
+import Image27 from "../../assets/Products/Foot/IMG-27.jpg";
 
 const products = [
   {
@@ -140,7 +148,7 @@ const products = [
     original: "₹14,999",
     image: Image18,
     imagetitle: "Foot Massager",
-    thumbnails: [Image13, Image14],
+    thumbnails: [Image18],
     description: "Perfect for tired feet and calves after a long day.",
     features: [
       "Air Compression Massage",
@@ -160,7 +168,7 @@ const products = [
     original: "₹14,999",
     image: Image18,
     imagetitle: "Foot Massager",
-    thumbnails: [Image18, Image14],
+    thumbnails: [Image18,],
     description: "Perfect for tired feet and calves after a long day.",
     features: [
       "Air Compression Massage",
@@ -178,9 +186,89 @@ const products = [
     reviews: 80,
     price: "₹6,499",
     original: "₹14,999",
-    image: Image18,
+    image: Image19,
     imagetitle: "Foot Massager",
     thumbnails: [Image19, Image20, Image21],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+    {
+     id: 9,
+    title: "Foot Massager : Leg massager",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image28,
+    imagetitle: "Foot Massager",
+    thumbnails: [Image28, Image29],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+    {
+     id: 10,
+    title: "Foot Massager : Leg massager",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image22,
+    imagetitle: "Foot Massager",
+    thumbnails: [ Image22],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+    {
+     id: 11,
+    title: "O2 Neck Massager (Wireless)",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image23,
+    imagetitle: "Foot Massager",
+    thumbnails: [ Image23, Image24, Image25],
+    description: "Perfect for tired feet and calves after a long day.",
+    features: [
+      "Air Compression Massage",
+      "Heat Therapy",
+      "Auto Shut-off",
+      "Multiple Modes",
+    ],
+    whyChoose: "Affordable and compact massager for your home comfort.",
+    },
+    {
+     id: 12,
+    title: "O2 Neck Massager (Wireless)",
+    type: "Foot Massager",
+    rating: 4.0,
+    reviews: 80,
+    price: "₹6,499",
+    original: "₹14,999",
+    image: Image26,
+    imagetitle: "Foot Massager",
+    thumbnails: [ Image26, Image27],
     description: "Perfect for tired feet and calves after a long day.",
     features: [
       "Air Compression Massage",

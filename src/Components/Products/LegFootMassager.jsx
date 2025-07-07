@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, incrementQty, decrementQty } from "../../redux/cartSlice";
 
-import Image18 from "../../assets/Products/Leg/Img-18.jpeg";
-import Image4 from "../../assets/Products/MCChair/IMG-4.jpg";
-import Image6 from "../../assets/Products/MCChair/IMG-6.jpeg";
-import Image11 from "../../assets/Products/MCChair/IMG-11.jpg";
-import Image13 from "../../assets/Products/MCChair/IMG-13.jpg";
+
+import Image20 from "../../assets/Products/Foot/IMG-20.jpg";
+import Image22 from "../../assets/Products/Foot/IMG-22.jpg";
+import Image23 from "../../assets/Products/Foot/IMG-23.jpg";
+import Image26 from "../../assets/Products/Foot/IMG-26.jpg";
+
 
 const LegProducts = [
   {
-    id: 6,
-    title: "Home Gym Fitness (Advanced Model)",
-    image: Image18,
+    id: 9,
+    title: "Foot Massager : Leg massager",
+    image: Image20,
     oldPrice: "₹2,65,000",
     price: "₹2,08,500",
     rating: "4.8",
@@ -21,9 +22,29 @@ const LegProducts = [
     tag: "Massage Chair",
   },
   {
-    id: 7,
+    id: 10,
     title: "Home Gym Fitness (Advanced Model)",
-    image: Image18,
+    image: Image22,
+    oldPrice: "₹3,15,000",
+    price: "₹2,75,000",
+    rating: "4.9",
+    reviews: "987",
+    tag: "Massage Chair",
+  },
+  {
+    id: 11,
+    title: "Home Gym Fitness (Advanced Model)",
+    image: Image23,
+    oldPrice: "₹3,15,000",
+    price: "₹2,75,000",
+    rating: "4.9",
+    reviews: "987",
+    tag: "Massage Chair",
+  },
+  {
+    id: 12,
+    title: "Home Gym Fitness (Advanced Model)",
+    image: Image26,
     oldPrice: "₹3,15,000",
     price: "₹2,75,000",
     rating: "4.9",

@@ -168,7 +168,7 @@ const TopHeader = () => {
             </button>
 
             {/* Enquiry Form */}
-            <Enquiry/>
+            <Enquiry  onClose={() => setShowEnquiry(false)}/>
           </div>
         </div>
       )}

@@ -9,7 +9,7 @@ import Image6 from "../../assets/Products/MCChair/IMG-6.jpeg";
 import Image11 from "../../assets/Products/MCChair/IMG-11.jpg";
 import Image13 from "../../assets/Products/MCChair/IMG-13.jpg";
 
-const LegProducts = [
+const FitProducts = [
   {
     id: 6,
     title: "Home Gym Fitness (Advanced Model)",
@@ -59,7 +59,7 @@ const FitnessMassagers = () => {
       </p>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-center">
-        {LegProducts.map((product) => {
+        {FitProducts.map((product) => {
           const qty = getQuantity(product.id);
 
           return (

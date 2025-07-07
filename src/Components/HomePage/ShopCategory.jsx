@@ -9,6 +9,8 @@ import Image3 from "../../assets/HomeImage/IMG3.png";
 import Image4 from "../../assets/HomeImage/IMG4.png";
 import Image5 from "../../assets/Products/MCChair/IMG-4.jpg";
 import Image6 from "../../assets/Products/MCChair/IMG-6.jpeg"
+import Image18 from "../../assets/Products/Leg/Img-18.jpeg";
+import Image26 from "../../assets/Products/Foot/IMG-26.jpg";
 
 const shopcat = [
   {
@@ -52,25 +54,25 @@ const shopcat = [
     image: Image4,
   },
   {
-    id: 5,
-    title: "O2 Fitness Health Care Mini Vibrator Machine",
-    type: "Vibration Machine",
-    rating: 4.2,
-    reviews: 76,
-    price: "₹11,600",
-    original: "₹22,000",
-    image: Image5,
-  },
+      id: 12,
+      title: "Home Gym Fitness (Advanced Model)",
+      image: Image26,
+      oldPrice: "₹3,15,000",
+      price: "₹2,75,000",
+      rating: "4.9",
+      reviews: "987",
+      tag: "Massage Chair",
+    },
   {
-    id: 6,
-    title: "O2 Fitness Health Care Neck Kneading Special",
-    type: "Neck Massager",
-    rating: 4.1,
-    reviews: 69,
-    price: "₹2,499",
-    original: "₹4,500",
-    image: Image6,
-  },
+      id: 6,
+      title: "Home Gym Fitness (Advanced Model)",
+      image: Image18,
+      oldPrice: "₹2,65,000",
+      price: "₹2,08,500",
+      rating: "4.8",
+      reviews: "1,204",
+      tag: "Massage Chair",
+    },
 ];
 
 const ProductCard = ({ product, onNavigate, onBuyNow }) => (
